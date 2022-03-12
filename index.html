@@ -8,19 +8,33 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
+    function Btn(text, changeValue) {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: 10,
+          }}
+          onClick={changeValue}
+        >
+          {text}
+        </button>
+      );
+    }
 
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        setCounter(counter + 1);
-      };
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <h3>Total Click: {counter}</h3>
-          <button onClick={onClick}>Click me</button>
+          <Btn text={value} changeValue={changeValue} />
+          <Btn text="Continue" />
         </div>
       );
     }
+
     ReactDOM.render(<App />, root);
   </script>
 </html>
